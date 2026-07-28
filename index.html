@@ -326,7 +326,9 @@
   .ba-wrap{max-width:760px; margin:0 auto;}
   .ba-slider{position:relative; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:16/10; user-select:none; background:#eef3f8;}
   .ba-base{position:absolute; inset:0;}
-  .ba-base svg, .ba-inner svg{display:block; width:100%; height:100%;}
+  .ba-base img, .ba-inner img{display:block; width:100%; height:100%; object-fit:cover;}
+  .ba-base img{filter:saturate(1.2) brightness(1.1) contrast(1.08);}
+  .ba-inner img{filter:sepia(0.45) saturate(0.6) brightness(0.82) contrast(0.95);}
   .ba-clip{position:absolute; inset:0; overflow:hidden; z-index:2;}
   .ba-inner{position:absolute; left:0; top:0; height:100%;}
   .ba-handle{
@@ -924,34 +926,11 @@
       <div class="ba-wrap reveal">
         <div class="ba-slider" id="baSlider">
           <div class="ba-base">
-            <svg viewBox="0 0 760 475" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <rect width="760" height="475" fill="#EAF3FE"/>
-              <ellipse cx="380" cy="520" rx="260" ry="180" fill="#DCEBFC"/>
-              <path d="M210 230c40 70 120 110 170 110s130-40 170-110c-20 60-90 130-170 130s-150-70-170-130z" fill="#fff" stroke="#123B6D" stroke-width="3"/>
-              <g fill="#fff" stroke="#B9CDE6" stroke-width="2">
-                <rect x="240" y="235" width="52" height="66" rx="12"/>
-                <rect x="296" y="240" width="52" height="80" rx="12"/>
-                <rect x="352" y="243" width="56" height="86" rx="12"/>
-                <rect x="412" y="240" width="52" height="80" rx="12"/>
-                <rect x="468" y="235" width="52" height="66" rx="12"/>
-              </g>
-              <circle cx="590" cy="120" r="3" fill="#8FC7FF"/><circle cx="610" cy="150" r="2" fill="#8FC7FF"/>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1664529842504-5743d286ec1b?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Smile after whitening" loading="lazy">
           </div>
           <div class="ba-clip" id="baClip" style="width:50%;">
             <div class="ba-inner" id="baInner">
-              <svg viewBox="0 0 760 475" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="760" height="475" fill="#EDEDED"/>
-                <ellipse cx="380" cy="520" rx="260" ry="180" fill="#E2E2E0"/>
-                <path d="M210 230c40 70 120 110 170 110s130-40 170-110c-20 60-90 130-170 130s-150-70-170-130z" fill="#EFEAD6" stroke="#8A8069" stroke-width="3"/>
-                <g fill="#E9DDB5" stroke="#B8AA7E" stroke-width="2">
-                  <rect x="240" y="235" width="52" height="66" rx="10"/>
-                  <rect x="296" y="240" width="52" height="80" rx="10"/>
-                  <rect x="352" y="243" width="56" height="86" rx="10"/>
-                  <rect x="412" y="240" width="52" height="80" rx="10"/>
-                  <rect x="468" y="235" width="52" height="66" rx="10"/>
-                </g>
-              </svg>
+              <img src="https://images.unsplash.com/photo-1664529842504-5743d286ec1b?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Smile before whitening" loading="lazy">
             </div>
           </div>
           <span class="ba-tag before-tag">Before</span>
@@ -960,7 +939,7 @@
             <div class="knob"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg></div>
           </div>
         </div>
-        <p class="ba-caption">Illustrative example of a whitening result — drag the handle to compare.</p>
+        <p class="ba-caption">Illustrative example — same photo, styled to show a whitening effect. Real patient photos coming soon.</p>
       </div>
     </div>
   </section>
