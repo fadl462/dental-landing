@@ -541,6 +541,104 @@
     padding:12px 18px; z-index:200; border-radius:0 0 10px 0; font-weight:700;
   }
   .skip-link:focus{left:0;}
+
+  /* ---------- Mobile nav drawer ---------- */
+  .mobile-drawer{
+    position:fixed; inset:0; z-index:150; display:none;
+  }
+  .mobile-drawer.open{display:block;}
+  .drawer-backdrop{position:absolute; inset:0; background:rgba(12,42,78,0.45); backdrop-filter:blur(2px); animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
+  .drawer-panel{
+    position:absolute; top:0; right:0; bottom:0; width:min(320px,84vw); background:#fff;
+    box-shadow:-16px 0 40px rgba(18,59,109,0.18); padding:24px; display:flex; flex-direction:column; gap:6px;
+    transform:translateX(100%); transition:transform .3s ease;
+  }
+  .mobile-drawer.open .drawer-panel{transform:translateX(0);}
+  .drawer-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;}
+  .drawer-close{width:36px; height:36px; border-radius:50%; background:var(--foam); border:none; display:flex; align-items:center; justify-content:center;}
+  .drawer-panel a.dlink{padding:13px 6px; font-weight:700; color:var(--navy-ink); font-size:16px; border-bottom:1px solid var(--line);}
+  .drawer-panel .btn{margin-top:16px;}
+  .drawer-phone{display:flex; align-items:center; gap:8px; font-weight:700; color:var(--navy-ink); margin-top:14px;}
+  .drawer-phone svg{width:17px; height:17px; color:var(--blue);}
+
+  /* ---------- Clickable cards ---------- */
+  .svc-card, .dentist-card, .tour-item{cursor:pointer;}
+  .svc-card:focus-visible, .dentist-card:focus-visible{outline:3px solid var(--blue); outline-offset:2px;}
+  .tour-item{position:relative;}
+  .tour-item::after{
+    content:""; position:absolute; inset:0; background:rgba(12,42,78,0); transition:background .25s ease;
+  }
+  .tour-item:hover::after{background:rgba(12,42,78,0.12);}
+  .tour-item .zoom-ic{
+    position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%;
+    background:rgba(255,255,255,0.92); display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .2s ease; z-index:2;
+  }
+  .tour-item:hover .zoom-ic{opacity:1;}
+  .tour-item .zoom-ic svg{width:16px; height:16px; color:var(--navy-ink);}
+  .tour-item img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:200; display:none; align-items:flex-start; justify-content:center;
+    padding:6vh 20px; overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-backdrop{position:fixed; inset:0; background:rgba(12,42,78,0.55); backdrop-filter:blur(3px); animation:fadeIn .2s ease;}
+  .modal-box{
+    position:relative; z-index:1; background:#fff; border-radius:24px; max-width:560px; width:100%;
+    box-shadow:var(--shadow-lg); animation:modalPop .25s ease; overflow:hidden;
+  }
+  @keyframes modalPop{from{opacity:0; transform:translateY(16px) scale(.98);} to{opacity:1; transform:none;}}
+  .modal-media{height:150px; background:linear-gradient(135deg, var(--foam-2), #fff); display:flex; align-items:center; justify-content:center; position:relative;}
+  .modal-media svg{width:56px; height:56px; color:var(--blue);}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  .modal-close{
+    position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%;
+    background:rgba(255,255,255,0.92); border:none; display:flex; align-items:center; justify-content:center; z-index:2;
+    box-shadow:var(--shadow-sm);
+  }
+  .modal-body{padding:28px 30px 30px;}
+  .modal-body .eyebrow{margin-bottom:8px;}
+  .modal-body h3{font-size:22px; font-family:var(--display); font-weight:600;}
+  .modal-body p{margin-top:12px; font-size:14.5px;}
+  .modal-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+  .modal-tags span{font-size:11.5px; font-weight:700; background:var(--foam); color:var(--navy-ink); padding:5px 11px; border-radius:100px;}
+  .modal-actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox-overlay{
+    position:fixed; inset:0; z-index:210; display:none; align-items:center; justify-content:center; padding:5vh 20px;
+  }
+  .lightbox-overlay.open{display:flex;}
+  .lightbox-backdrop{position:fixed; inset:0; background:rgba(6,20,38,0.86);}
+  .lightbox-img-wrap{position:relative; z-index:1; max-width:900px; width:100%;}
+  .lightbox-img-wrap img{width:100%; border-radius:16px; display:block; max-height:80vh; object-fit:cover;}
+  .lightbox-cap{color:#fff; text-align:center; margin-top:14px; font-size:14px; font-weight:600;}
+  .lightbox-close{
+    position:absolute; top:-46px; right:0; width:38px; height:38px; border-radius:50%;
+    background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ---------- Testimonial dots ---------- */
+  .testi-dots{display:flex; gap:8px; margin-top:16px;}
+  .testi-dots button{
+    width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); border:none; padding:0;
+    transition:background .2s ease, width .2s ease;
+  }
+  .testi-dots button.active{background:#fff; width:22px; border-radius:5px;}
+
+  /* ---------- Hero photo treatment ---------- */
+  .hero-art .photo-frame{
+    position:absolute; inset:0; border-radius:50% 50% 46% 54% / 54% 48% 52% 46%;
+    overflow:hidden; box-shadow:var(--shadow-lg); animation:blobmorph 12s ease-in-out infinite;
+  }
+  .hero-art .photo-frame img{width:100%; height:100%; object-fit:cover;}
+  .hero-art .photo-frame::before{
+    content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(18,59,109,0) 40%, rgba(12,42,78,0.55) 100%);
+  }
 </style>
 </head>
 <body>
@@ -572,9 +670,31 @@
       </a>
       <a class="btn btn-primary btn-sm" href="#contact">Book Appointment</a>
     </div>
-    <button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" id="burgerBtn"><span></span><span></span><span></span></button>
   </nav>
 </header>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="drawer-backdrop" data-close-drawer></div>
+  <div class="drawer-panel">
+    <div class="drawer-top">
+      <span class="logo" style="font-size:18px;">Cove Dental</span>
+      <button class="drawer-close" aria-label="Close menu" data-close-drawer>
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <a class="dlink" href="#services" data-close-drawer>Services</a>
+    <a class="dlink" href="#dentists" data-close-drawer>Dentists</a>
+    <a class="dlink" href="#insurance" data-close-drawer>Insurance</a>
+    <a class="dlink" href="#testimonials" data-close-drawer>Reviews</a>
+    <a class="dlink" href="#contact" data-close-drawer>Contact</a>
+    <a class="drawer-phone" href="tel:+15552863835">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.98.804l1.108 5.542a1 1 0 01-.502 1.107l-1.7.85a11.05 11.05 0 005.516 5.516l.85-1.7a1 1 0 011.107-.502l5.542 1.108a1 1 0 01.804.98V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z"/></svg>
+      (555) 286-3835
+    </a>
+    <a class="btn btn-primary" href="#contact" data-close-drawer style="width:100%;">Book Appointment</a>
+  </div>
+</div>
 
 <main id="main">
 
@@ -599,7 +719,9 @@
         </div>
       </div>
       <div class="hero-art reveal">
-        <div class="ring"></div>
+        <div class="photo-frame">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Bright, modern treatment room at Cove Dental Studio" loading="lazy">
+        </div>
         <div class="card-float card-1">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-3 2-5 5-5 9a5 5 0 0010 0c0-1.5-.5-2.5-1-3.5"/><path stroke-linecap="round" d="M12 21v-4"/></svg>
           <div><div class="num">Pain-free</div><div class="lbl">Numbing tech</div></div>
@@ -658,7 +780,7 @@
         <p>From routine cleanings to full smile transformations — clear next steps, no upselling.</p>
       </div>
       <div class="services-grid reveal-stagger">
-        <div class="svc-card">
+        <div class="svc-card" data-service="0" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c-3 2-5 5-5 9a5 5 0 0010 0c0-4-2-7-5-9z"/></svg></div>
           <div class="svc-body">
             <h4>General Dentistry</h4>
@@ -666,7 +788,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="1" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4a8 8 0 100 16 8 8 0 000-16zm0 4v4l3 2"/></svg></div>
           <div class="svc-body">
             <h4>Cosmetic Dentistry</h4>
@@ -674,7 +796,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="2" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
           <div class="svc-body">
             <h4>Teeth Whitening</h4>
@@ -682,7 +804,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="3" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v6m0 0l-3 3m3-3l3 3M6 21h12M8 21v-4a4 4 0 018 0v4"/></svg></div>
           <div class="svc-body">
             <h4>Dental Implants</h4>
@@ -690,7 +812,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="4" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h16M4 12a4 4 0 014-4h8a4 4 0 014 4M4 12a4 4 0 004 4h8a4 4 0 004-4"/></svg></div>
           <div class="svc-body">
             <h4>Orthodontics</h4>
@@ -698,7 +820,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="5" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/></svg></div>
           <div class="svc-body">
             <h4>Emergency Dental</h4>
@@ -706,7 +828,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="6" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 21V9a2 2 0 012-2h2a2 2 0 012 2v12M4 21h16"/></svg></div>
           <div class="svc-body">
             <h4>Pediatric Dentistry</h4>
@@ -714,7 +836,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="7" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m-6-8h12"/></svg></div>
           <div class="svc-body">
             <h4>Root Canal Therapy</h4>
@@ -722,7 +844,7 @@
             <div class="svc-actions"><a class="svc-link" href="#contact">Learn more <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
           </div>
         </div>
-        <div class="svc-card">
+        <div class="svc-card" data-service="8" tabindex="0" role="button">
           <div class="svc-visual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></div>
           <div class="svc-body">
             <h4>Crowns, Bridges & Veneers</h4>
@@ -743,7 +865,7 @@
         <p>Board-certified, continuously trained, and picked as much for bedside manner as for clinical skill.</p>
       </div>
       <div class="dentist-grid reveal-stagger">
-        <article class="dentist-card">
+        <article class="dentist-card" data-dentist="0" tabindex="0" role="button">
           <div class="dentist-photo">
             <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#123B6D"/><circle cx="150" cy="140" r="62" fill="#DCEBFC"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#007BFF"/></svg>
           </div>
@@ -754,7 +876,7 @@
             <div class="dentist-tags"><span>English</span><span>Spanish</span><span>Same-day slots</span></div>
           </div>
         </article>
-        <article class="dentist-card">
+        <article class="dentist-card" data-dentist="1" tabindex="0" role="button">
           <div class="dentist-photo">
             <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#0062CC"/><circle cx="150" cy="140" r="62" fill="#EAF3FE"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#123B6D"/></svg>
           </div>
@@ -765,7 +887,7 @@
             <div class="dentist-tags"><span>English</span><span>Yoruba</span><span>Implant specialist</span></div>
           </div>
         </article>
-        <article class="dentist-card">
+        <article class="dentist-card" data-dentist="2" tabindex="0" role="button">
           <div class="dentist-photo">
             <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#123B6D"/><circle cx="150" cy="140" r="62" fill="#DCEBFC"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#007BFF"/></svg>
           </div>
@@ -776,7 +898,7 @@
             <div class="dentist-tags"><span>English</span><span>Hindi</span><span>Kid-friendly</span></div>
           </div>
         </article>
-        <article class="dentist-card">
+        <article class="dentist-card" data-dentist="3" tabindex="0" role="button">
           <div class="dentist-photo">
             <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#0062CC"/><circle cx="150" cy="140" r="62" fill="#EAF3FE"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#123B6D"/></svg>
           </div>
@@ -937,9 +1059,21 @@
         <h2>A clinic designed to lower your heart rate, not raise it.</h2>
       </div>
       <div class="tour-grid reveal-stagger">
-        <div class="tour-item"><svg viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice"><rect width="400" height="480" fill="#DCEBFC"/><rect y="330" width="400" height="150" fill="#EAF3FE"/><circle cx="120" cy="200" r="60" fill="#007BFF" opacity="0.85"/><rect x="230" y="140" width="120" height="160" rx="18" fill="#123B6D" opacity="0.9"/></svg><span class="tour-cap">Reception & lounge</span></div>
-        <div class="tour-item"><svg viewBox="0 0 260 230" preserveAspectRatio="xMidYMid slice"><rect width="260" height="230" fill="#EAF3FE"/><rect x="30" y="70" width="200" height="110" rx="16" fill="#0062CC"/><circle cx="130" cy="60" r="30" fill="#123B6D"/></svg><span class="tour-cap">Treatment room</span></div>
-        <div class="tour-item"><svg viewBox="0 0 260 230" preserveAspectRatio="xMidYMid slice"><rect width="260" height="230" fill="#DCEBFC"/><rect x="60" y="40" width="140" height="150" rx="14" fill="#123B6D"/></svg><span class="tour-cap">Digital imaging suite</span></div>
+        <div class="tour-item" data-lightbox="0">
+          <img src="https://images.unsplash.com/photo-1704455306251-b4634215d98f?fm=jpg&q=80&w=900&auto=format&fit=crop" alt="Reception and lounge area" loading="lazy">
+          <span class="zoom-ic"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg></span>
+          <span class="tour-cap">Reception & lounge</span>
+        </div>
+        <div class="tour-item" data-lightbox="1">
+          <img src="https://images.unsplash.com/photo-1642844819197-5f5f21b89ff8?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="Modern treatment room with dental chair" loading="lazy">
+          <span class="zoom-ic"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg></span>
+          <span class="tour-cap">Treatment room</span>
+        </div>
+        <div class="tour-item" data-lightbox="2">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?fm=jpg&q=80&w=700&auto=format&fit=crop" alt="Digital imaging suite with dental equipment" loading="lazy">
+          <span class="zoom-ic"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg></span>
+          <span class="tour-cap">Digital imaging suite</span>
+        </div>
         <div class="tour-item"><svg viewBox="0 0 260 230" preserveAspectRatio="xMidYMid slice"><rect width="260" height="230" fill="#0C2A4E"/><circle cx="90" cy="120" r="46" fill="#007BFF"/><circle cx="180" cy="90" r="26" fill="#22C55E" opacity="0.7"/></svg><span class="tour-cap">Sterilization center</span></div>
         <div class="tour-item"><svg viewBox="0 0 260 230" preserveAspectRatio="xMidYMid slice"><rect width="260" height="230" fill="#EAF3FE"/><rect x="20" y="90" width="220" height="100" rx="20" fill="#007BFF" opacity="0.9"/></svg><span class="tour-cap">Kids' corner</span></div>
       </div>
@@ -1119,6 +1253,30 @@
   </a>
 </div>
 
+<!-- ============ SERVICE / DENTIST MODAL ============ -->
+<div class="modal-overlay" id="infoModal">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-box">
+    <div class="modal-media" id="modalMedia"></div>
+    <button class="modal-close" aria-label="Close" data-close-modal>
+      <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.6"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-backdrop" data-close-lightbox></div>
+  <div class="lightbox-img-wrap">
+    <button class="lightbox-close" aria-label="Close" data-close-lightbox>
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
 <script>
 (function(){
   // Sticky header shadow
@@ -1190,8 +1348,116 @@
 
   // Testimonial nav
   const track = document.getElementById('testiTrack');
+  const testiCards = track.querySelectorAll('.testi-card');
   document.getElementById('testiNext').addEventListener('click', ()=> track.scrollBy({left:380, behavior:'smooth'}));
   document.getElementById('testiPrev').addEventListener('click', ()=> track.scrollBy({left:-380, behavior:'smooth'}));
+
+  // Testimonial dots
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'testi-dots';
+  testiCards.forEach((_, i)=>{
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Go to review ' + (i+1));
+    if(i===0) dot.classList.add('active');
+    dot.addEventListener('click', ()=> testiCards[i].scrollIntoView({behavior:'smooth', inline:'start', block:'nearest'}));
+    dotsWrap.appendChild(dot);
+  });
+  document.getElementById('testiNext').parentElement.appendChild(dotsWrap);
+  let scrollTimeout;
+  track.addEventListener('scroll', ()=>{
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(()=>{
+      let closest = 0, min = Infinity;
+      testiCards.forEach((c,i)=>{
+        const d = Math.abs(c.getBoundingClientRect().left - track.getBoundingClientRect().left);
+        if(d < min){ min = d; closest = i; }
+      });
+      dotsWrap.querySelectorAll('button').forEach((b,i)=> b.classList.toggle('active', i===closest));
+    }, 80);
+  });
+
+  // ---------- Mobile drawer ----------
+  const drawer = document.getElementById('mobileDrawer');
+  const burgerBtn = document.getElementById('burgerBtn');
+  function openDrawer(){ drawer.classList.add('open'); burgerBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer(){ drawer.classList.remove('open'); burgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burgerBtn.addEventListener('click', openDrawer);
+  drawer.querySelectorAll('[data-close-drawer]').forEach(el=> el.addEventListener('click', closeDrawer));
+
+  // ---------- Service / Dentist detail modal ----------
+  const serviceData = [
+    {icon:'M12 3c-3 2-5 5-5 9a5 5 0 0010 0c0-4-2-7-5-9z', title:'General Dentistry', text:"Twice-yearly checkups and cleanings, cavity screening, and gum health checks — the routine care that catches small problems while they're still small and inexpensive to fix.", tags:['Cleanings','Exams','Fluoride treatment']},
+    {icon:'M12 4a8 8 0 100 16 8 8 0 000-16zm0 4v4l3 2', title:'Cosmetic Dentistry', text:'Bonding, contouring, and gum reshaping to refine your smile\'s shape and color — subtle changes that still look completely like you.', tags:['Bonding','Contouring','Smile design']},
+    {icon:'M5 13l4 4L19 7', title:'Teeth Whitening', text:'In-office whitening lifts stains several shades in about an hour, with a take-home touch-up kit so results last. We check sensitivity first so there are no surprises.', tags:['In-office','Take-home kit','1-hour session']},
+    {icon:'M12 2v6m0 0l-3 3m3-3l3 3M6 21h12M8 21v-4a4 4 0 018 0v4', title:'Dental Implants', text:'A titanium post fuses with your jawbone to support a crown that looks and chews like a natural tooth. Placement and restoration both happen in-house, so your care never gets split across offices.', tags:['Single tooth','Full arch','3D-planned']},
+    {icon:'M4 12h16M4 12a4 4 0 014-4h8a4 4 0 014 4M4 12a4 4 0 004 4h8a4 4 0 004-4', title:'Orthodontics', text:'Clear aligners or traditional braces, with a full digital preview of your finished smile before you commit to treatment.', tags:['Clear aligners','Braces','Retainers']},
+    {icon:'M12 9v4m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z', title:'Emergency Dental', text:'Broken tooth, sudden pain, or a knocked-out tooth — call ahead and we\'ll have a chair and a dentist ready the same day, including evenings and weekends.', tags:['Same-day','Evenings & weekends','Walk-ins welcome']},
+    {icon:'M9 21V9a2 2 0 012-2h2a2 2 0 012 2v12M4 21h16', title:'Pediatric Dentistry', text:'A calm, playful first experience — from the waiting area to the chair — built to help kids feel in control instead of scared.', tags:['Ages 1+','Sealants','Gentle approach']},
+    {icon:'M12 4v16m-6-8h12', title:'Root Canal Therapy', text:'Modern numbing and rotary instruments mean most root canals finish in a single visit with far less discomfort than their reputation suggests.', tags:['Single visit','Pain relief','Crown included']},
+    {icon:'M4 6h16M4 12h16M4 18h16', title:'Crowns, Bridges & Veneers', text:'Custom-milled restorations matched to your exact bite and shade — not picked from a generic catalog — built to last for years.', tags:['Custom-milled','Shade-matched','Durable']}
+  ];
+  const dentistData = [
+    {title:'Dr. Amara Whitfield', role:'General & Cosmetic Dentistry', text:'14 years of experience focused on making routine and cosmetic visits feel unhurried. DDS from University of the Pacific.', tags:['English','Spanish','Same-day slots']},
+    {title:'Dr. Marcus Oyelaran', role:'Oral Surgery & Implants', text:'19 years placing and restoring implants, with a particular interest in full-arch reconstruction. DMD from Boston University.', tags:['English','Yoruba','Implant specialist']},
+    {title:'Dr. Priya Nandakumar', role:'Pediatric Dentistry', text:'11 years working exclusively with kids — she designed our Kids\' Corner herself. DDS from UCLA.', tags:['English','Hindi','Kid-friendly']},
+    {title:'Dr. Elena Fontaine', role:'Orthodontics', text:'9 years in orthodontics with an MSD focus, specializing in Invisalign and early interceptive treatment for children.', tags:['English','French','Invisalign']}
+  ];
+
+  const modal = document.getElementById('infoModal');
+  const modalMedia = document.getElementById('modalMedia');
+  const modalBody = document.getElementById('modalBody');
+  function openModal(item, kind){
+    modalMedia.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="${item.icon || 'M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z'}"/></svg>`;
+    modalBody.innerHTML = `
+      <span class="eyebrow">${kind === 'service' ? 'Service' : 'Meet the dentist'}</span>
+      <h3>${item.title}</h3>
+      ${item.role ? `<div style="font-size:12.5px; font-weight:700; color:var(--blue-deep); margin-top:4px;">${item.role}</div>` : ''}
+      <p>${item.text}</p>
+      <div class="modal-tags">${item.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <div class="modal-actions">
+        <a class="btn btn-primary btn-sm" href="#contact" data-close-modal data-ripple>${kind === 'service' ? 'Book this service' : 'Book with ' + item.title}</a>
+        <a class="btn btn-ghost btn-sm" href="tel:+15552863835" data-ripple>Call to ask a question</a>
+      </div>`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; }
+  document.querySelectorAll('.svc-link').forEach(a=> a.addEventListener('click', e=> e.preventDefault()));
+  document.querySelectorAll('[data-service]').forEach(card=>{
+    const go = ()=> openModal(serviceData[+card.dataset.service], 'service');
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); go(); } });
+  });
+  document.querySelectorAll('[data-dentist]').forEach(card=>{
+    const go = ()=> openModal(dentistData[+card.dataset.dentist], 'dentist');
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); go(); } });
+  });
+  modal.querySelectorAll('[data-close-modal]').forEach(el=> el.addEventListener('click', closeModal));
+
+  // ---------- Gallery lightbox ----------
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCap = document.getElementById('lightboxCap');
+  document.querySelectorAll('[data-lightbox]').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const img = item.querySelector('img');
+      lightboxImg.src = img.src.replace('w=900','w=1600').replace('w=700','w=1600');
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = item.querySelector('.tour-cap').textContent;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  lightbox.querySelectorAll('[data-close-lightbox]').forEach(el=> el.addEventListener('click', ()=>{
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  // Escape key closes any overlay
+  window.addEventListener('keydown', e=>{
+    if(e.key === 'Escape'){ closeModal(); closeDrawer(); lightbox.classList.remove('open'); document.body.style.overflow=''; }
+  });
 
   // Before/after slider
   const slider = document.getElementById('baSlider');
