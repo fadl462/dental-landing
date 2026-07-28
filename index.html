@@ -312,6 +312,7 @@
     background:linear-gradient(160deg, var(--navy) 0%, var(--blue-deep) 100%);
   }
   .dentist-photo svg{position:absolute; inset:0; width:100%; height:100%;}
+  .dentist-photo img{width:100%; height:100%; object-fit:cover; display:block;}
   .dentist-info{padding:18px 20px 22px;}
   .dentist-info h4{font-size:16.5px; font-family:var(--sans); font-weight:700;}
   .dentist-info .role{font-size:12.5px; color:var(--blue-deep); font-weight:700; margin-top:2px;}
@@ -323,14 +324,14 @@
 
   /* ---------- Before/After slider ---------- */
   .ba-wrap{max-width:760px; margin:0 auto;}
-  .ba-slider{position:relative; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:16/10; user-select:none;}
-  .ba-slider .layer{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:600; font-size:22px;}
-  .ba-before{background:linear-gradient(135deg,#CBD8E8,#E7EEF6); color:var(--navy-ink);}
-  .ba-after{background:linear-gradient(135deg, var(--foam-2), #fff); color:var(--navy-ink);}
-  .ba-after-clip{position:absolute; inset:0; overflow:hidden;}
+  .ba-slider{position:relative; border-radius:24px; overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:16/10; user-select:none; background:#eef3f8;}
+  .ba-base{position:absolute; inset:0;}
+  .ba-base svg, .ba-inner svg{display:block; width:100%; height:100%;}
+  .ba-clip{position:absolute; inset:0; overflow:hidden; z-index:2;}
+  .ba-inner{position:absolute; left:0; top:0; height:100%;}
   .ba-handle{
-    position:absolute; top:0; bottom:0; width:3px; background:#fff; left:50%;
-    box-shadow:0 0 0 1px rgba(0,0,0,0.06); cursor:ew-resize;
+    position:absolute; top:0; bottom:0; width:3px; background:#fff; z-index:4;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.06); cursor:ew-resize; transform:translateX(-50%);
   }
   .ba-handle .knob{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
@@ -338,7 +339,7 @@
     display:flex; align-items:center; justify-content:center;
   }
   .ba-handle .knob svg{width:18px; height:18px; color:var(--blue-deep);}
-  .ba-tag{position:absolute; top:16px; font-size:12px; font-weight:700; padding:6px 12px; border-radius:100px; background:rgba(255,255,255,0.9); color:var(--navy-ink);}
+  .ba-tag{position:absolute; top:16px; font-size:12px; font-weight:700; padding:6px 12px; border-radius:100px; background:rgba(255,255,255,0.9); color:var(--navy-ink); z-index:5;}
   .ba-tag.before-tag{left:16px;} .ba-tag.after-tag{right:16px;}
   .ba-caption{text-align:center; margin-top:18px; font-size:14px;}
 
@@ -867,7 +868,7 @@
       <div class="dentist-grid reveal-stagger">
         <article class="dentist-card" data-dentist="0" tabindex="0" role="button">
           <div class="dentist-photo">
-            <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#123B6D"/><circle cx="150" cy="140" r="62" fill="#DCEBFC"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#007BFF"/></svg>
+            <img src="https://images.unsplash.com/photo-1673865641073-4479f93a7776?fm=jpg&q=80&w=500&auto=format&fit=crop" alt="Dr. Amara Whitfield" loading="lazy">
           </div>
           <div class="dentist-info">
             <h4>Dr. Amara Whitfield</h4>
@@ -878,7 +879,7 @@
         </article>
         <article class="dentist-card" data-dentist="1" tabindex="0" role="button">
           <div class="dentist-photo">
-            <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#0062CC"/><circle cx="150" cy="140" r="62" fill="#EAF3FE"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#123B6D"/></svg>
+            <img src="https://images.unsplash.com/photo-1758691463582-11aea602cd4a?fm=jpg&q=80&w=500&auto=format&fit=crop" alt="Dr. Marcus Oyelaran" loading="lazy">
           </div>
           <div class="dentist-info">
             <h4>Dr. Marcus Oyelaran</h4>
@@ -889,7 +890,7 @@
         </article>
         <article class="dentist-card" data-dentist="2" tabindex="0" role="button">
           <div class="dentist-photo">
-            <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#123B6D"/><circle cx="150" cy="140" r="62" fill="#DCEBFC"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#007BFF"/></svg>
+            <img src="https://images.unsplash.com/photo-1758691462651-611d730c5272?fm=jpg&q=80&w=500&auto=format&fit=crop" alt="Dr. Priya Nandakumar" loading="lazy">
           </div>
           <div class="dentist-info">
             <h4>Dr. Priya Nandakumar</h4>
@@ -900,7 +901,7 @@
         </article>
         <article class="dentist-card" data-dentist="3" tabindex="0" role="button">
           <div class="dentist-photo">
-            <svg viewBox="0 0 300 330" preserveAspectRatio="xMidYMid slice"><rect width="300" height="330" fill="#0062CC"/><circle cx="150" cy="140" r="62" fill="#EAF3FE"/><path d="M60 330c0-60 40-100 90-100s90 40 90 100" fill="#123B6D"/></svg>
+            <img src="https://images.unsplash.com/photo-1673865641073-4479f93a7776?fm=jpg&q=80&w=500&auto=format&fit=crop" alt="Dr. Elena Fontaine" loading="lazy" style="transform:scaleX(-1);">
           </div>
           <div class="dentist-info">
             <h4>Dr. Elena Fontaine</h4>
@@ -922,9 +923,36 @@
       </div>
       <div class="ba-wrap reveal">
         <div class="ba-slider" id="baSlider">
-          <div class="layer ba-before">Before</div>
-          <div class="ba-after-clip" id="baClip" style="width:50%;">
-            <div class="layer ba-after" style="width:calc(100vw);max-width:760px;">After</div>
+          <div class="ba-base">
+            <svg viewBox="0 0 760 475" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="760" height="475" fill="#EAF3FE"/>
+              <ellipse cx="380" cy="520" rx="260" ry="180" fill="#DCEBFC"/>
+              <path d="M210 230c40 70 120 110 170 110s130-40 170-110c-20 60-90 130-170 130s-150-70-170-130z" fill="#fff" stroke="#123B6D" stroke-width="3"/>
+              <g fill="#fff" stroke="#B9CDE6" stroke-width="2">
+                <rect x="240" y="235" width="52" height="66" rx="12"/>
+                <rect x="296" y="240" width="52" height="80" rx="12"/>
+                <rect x="352" y="243" width="56" height="86" rx="12"/>
+                <rect x="412" y="240" width="52" height="80" rx="12"/>
+                <rect x="468" y="235" width="52" height="66" rx="12"/>
+              </g>
+              <circle cx="590" cy="120" r="3" fill="#8FC7FF"/><circle cx="610" cy="150" r="2" fill="#8FC7FF"/>
+            </svg>
+          </div>
+          <div class="ba-clip" id="baClip" style="width:50%;">
+            <div class="ba-inner" id="baInner">
+              <svg viewBox="0 0 760 475" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <rect width="760" height="475" fill="#EDEDED"/>
+                <ellipse cx="380" cy="520" rx="260" ry="180" fill="#E2E2E0"/>
+                <path d="M210 230c40 70 120 110 170 110s130-40 170-110c-20 60-90 130-170 130s-150-70-170-130z" fill="#EFEAD6" stroke="#8A8069" stroke-width="3"/>
+                <g fill="#E9DDB5" stroke="#B8AA7E" stroke-width="2">
+                  <rect x="240" y="235" width="52" height="66" rx="10"/>
+                  <rect x="296" y="240" width="52" height="80" rx="10"/>
+                  <rect x="352" y="243" width="56" height="86" rx="10"/>
+                  <rect x="412" y="240" width="52" height="80" rx="10"/>
+                  <rect x="468" y="235" width="52" height="66" rx="10"/>
+                </g>
+              </svg>
+            </div>
           </div>
           <span class="ba-tag before-tag">Before</span>
           <span class="ba-tag after-tag">After — 6 weeks</span>
@@ -932,7 +960,7 @@
             <div class="knob"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg></div>
           </div>
         </div>
-        <p class="ba-caption">Cosmetic bonding & whitening — patient consented to sharing this transformation.</p>
+        <p class="ba-caption">Illustrative example of a whitening result — drag the handle to compare.</p>
       </div>
     </div>
   </section>
@@ -1397,17 +1425,21 @@
     {icon:'M4 6h16M4 12h16M4 18h16', title:'Crowns, Bridges & Veneers', text:'Custom-milled restorations matched to your exact bite and shade — not picked from a generic catalog — built to last for years.', tags:['Custom-milled','Shade-matched','Durable']}
   ];
   const dentistData = [
-    {title:'Dr. Amara Whitfield', role:'General & Cosmetic Dentistry', text:'14 years of experience focused on making routine and cosmetic visits feel unhurried. DDS from University of the Pacific.', tags:['English','Spanish','Same-day slots']},
-    {title:'Dr. Marcus Oyelaran', role:'Oral Surgery & Implants', text:'19 years placing and restoring implants, with a particular interest in full-arch reconstruction. DMD from Boston University.', tags:['English','Yoruba','Implant specialist']},
-    {title:'Dr. Priya Nandakumar', role:'Pediatric Dentistry', text:'11 years working exclusively with kids — she designed our Kids\' Corner herself. DDS from UCLA.', tags:['English','Hindi','Kid-friendly']},
-    {title:'Dr. Elena Fontaine', role:'Orthodontics', text:'9 years in orthodontics with an MSD focus, specializing in Invisalign and early interceptive treatment for children.', tags:['English','French','Invisalign']}
+    {title:'Dr. Amara Whitfield', role:'General & Cosmetic Dentistry', text:'14 years of experience focused on making routine and cosmetic visits feel unhurried. DDS from University of the Pacific.', tags:['English','Spanish','Same-day slots'], img:'https://images.unsplash.com/photo-1673865641073-4479f93a7776?fm=jpg&q=80&w=700&auto=format&fit=crop'},
+    {title:'Dr. Marcus Oyelaran', role:'Oral Surgery & Implants', text:'19 years placing and restoring implants, with a particular interest in full-arch reconstruction. DMD from Boston University.', tags:['English','Yoruba','Implant specialist'], img:'https://images.unsplash.com/photo-1758691463582-11aea602cd4a?fm=jpg&q=80&w=700&auto=format&fit=crop'},
+    {title:'Dr. Priya Nandakumar', role:'Pediatric Dentistry', text:'11 years working exclusively with kids — she designed our Kids\' Corner herself. DDS from UCLA.', tags:['English','Hindi','Kid-friendly'], img:'https://images.unsplash.com/photo-1758691462651-611d730c5272?fm=jpg&q=80&w=700&auto=format&fit=crop'},
+    {title:'Dr. Elena Fontaine', role:'Orthodontics', text:'9 years in orthodontics with an MSD focus, specializing in Invisalign and early interceptive treatment for children.', tags:['English','French','Invisalign'], img:'https://images.unsplash.com/photo-1673865641073-4479f93a7776?fm=jpg&q=80&w=700&auto=format&fit=crop', flip:true}
   ];
 
   const modal = document.getElementById('infoModal');
   const modalMedia = document.getElementById('modalMedia');
   const modalBody = document.getElementById('modalBody');
   function openModal(item, kind){
-    modalMedia.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="${item.icon || 'M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z'}"/></svg>`;
+    if(item.img){
+      modalMedia.innerHTML = `<img src="${item.img}" alt="${item.title}" style="${item.flip ? 'transform:scaleX(-1);' : ''}">`;
+    } else {
+      modalMedia.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path stroke-linecap="round" stroke-linejoin="round" d="${item.icon || 'M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z'}"/></svg>`;
+    }
     modalBody.innerHTML = `
       <span class="eyebrow">${kind === 'service' ? 'Service' : 'Meet the dentist'}</span>
       <h3>${item.title}</h3>
@@ -1463,18 +1495,25 @@
   const slider = document.getElementById('baSlider');
   const clip = document.getElementById('baClip');
   const handle = document.getElementById('baHandle');
+  const baInner = document.getElementById('baInner');
   let dragging = false;
+  function syncInnerWidth(){
+    const rect = slider.getBoundingClientRect();
+    baInner.style.width = rect.width + 'px';
+  }
   function setPos(clientX){
     const rect = slider.getBoundingClientRect();
     let pct = ((clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(4, Math.min(96, pct));
+    pct = Math.max(0, Math.min(100, pct));
     clip.style.width = pct + '%';
     handle.style.left = pct + '%';
   }
-  handle.addEventListener('pointerdown', (e)=>{ dragging = true; handle.setPointerCapture(e.pointerId); });
+  syncInnerWidth();
+  window.addEventListener('resize', syncInnerWidth);
+  handle.addEventListener('pointerdown', (e)=>{ dragging = true; handle.setPointerCapture(e.pointerId); e.preventDefault(); });
   window.addEventListener('pointerup', ()=> dragging = false);
   window.addEventListener('pointermove', (e)=>{ if(dragging) setPos(e.clientX); });
-  slider.addEventListener('click', (e)=> setPos(e.clientX));
+  slider.addEventListener('click', (e)=>{ if(e.target.closest('.ba-handle')) return; setPos(e.clientX); });
 
   // Financing calculator
   const costRange = document.getElementById('costRange');
